@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Jamesh\Uuid\HasUuid;
+use Propaganistas\LaravelPhone\Casts\RawPhoneNumberCast;
 
 class Contact extends Model
 {
@@ -37,7 +38,8 @@ class Contact extends Model
      *
      * @var array
      */
-    protected $casts = [];
+    protected $casts = [
+    ];
 
     /**
      * The accessors to append to the model's array form.

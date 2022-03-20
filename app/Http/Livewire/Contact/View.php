@@ -4,11 +4,13 @@ namespace App\Http\Livewire\Contact;
 
 use App\Models\Contact;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class View extends Component
 {
     public $contact;
+    public $cep = null;
 
     public $confirmingState;
     public $confirmingDelete;
@@ -17,6 +19,10 @@ class View extends Component
     {
         Gate::authorize('view', $contact_id);
         $this->contact = $contact_id;
+
+        if ($this->contact->cep) {
+            $this->cep = (array) Http::withoutVerifying()->withOptions(["verify" => false])->get('https://viacep.com.br/ws/' . $this->contact->cep . '/json/')->object();
+        }
     }
 
     public function state()

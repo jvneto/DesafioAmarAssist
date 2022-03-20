@@ -39,6 +39,13 @@ class Edit extends Component
     {
         Gate::authorize('update', $this->contact);
 
+        $this->validate([
+            'name' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'phone' => ['required', 'string'],
+            'cep' => ['nullable', 'string'],
+        ]);
+
         $this->contact->update([
             'name' => $this->name,
             'email' => $this->email,

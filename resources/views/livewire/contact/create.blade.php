@@ -35,7 +35,6 @@
                 <x-jet-input id="cep" type="text" class="mt-1 block w-full" wire:model.defer="cep"/>
                 <x-jet-input-error for="cep" class="mt-2"/>
             </div>
-
         </x-slot>
 
         <x-slot name="actions">

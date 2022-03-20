@@ -185,5 +185,7 @@
     "Disabled": "Desativado",
     "State": "Estado",
     "Edit Contact": "Editar Contato",
-    "This is the only way to change a contact from your address book." : "Esta é a única maneira de alterar um contato da sua agenda de contatos."
+    "This is the only way to change a contact from your address book." : "Esta é a única maneira de alterar um contato da sua agenda de contatos.",
+    "Contacts Directory": "Agenda de Contatos",
+    "Co Contact Found!": "Nenhum Contato Encontrado!"
 }

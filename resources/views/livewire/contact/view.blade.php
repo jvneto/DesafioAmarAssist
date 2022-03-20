@@ -17,19 +17,57 @@
         <x-slot name="form">
             <div class="col">
                 <x-jet-label for="name" value="{{ __('Name') }} *"/>
-                <x-jet-input id="name" type="text" class="mt-1 block w-full bg-gray-300" autocomplete="off" :value="$contact->name" disabled/>
-                <x-jet-input-error for="name" class="mt-2"/>
+                <x-jet-input id="name" type="text" class="mt-1 block w-full" autocomplete="off" :value="$contact->name"
+                             disabled/>
             </div>
             <div class="col">
                 <x-jet-label for="email" value="{{ __('Email') }} *"/>
-                <x-jet-input id="email" type="email" class="mt-1 block w-full bg-gray-300" autocomplete="off" :value="$contact->email" disabled/>
-                <x-jet-input-error for="email" class="mt-2"/>
+                <x-jet-input id="email" type="email" class="mt-1 block w-full" autocomplete="off"
+                             :value="$contact->email" disabled/>
             </div>
             <div class="col">
                 <x-jet-label for="phone" value="{{ __('Phone') }} *"/>
-                <x-jet-input id="phone" type="phone" class="mt-1 block w-full bg-gray-300" autocomplete="off" :value="$contact->phone" disabled/>
-                <x-jet-input-error for="phone" class="mt-2"/>
+                <x-jet-input id="phone" type="phone" class="mt-1 block w-full" autocomplete="off"
+                             :value="$contact->phone" disabled/>
             </div>
+            @if($cep)
+                <div class="col">
+                    <x-jet-label for="cep" value="{{ __('CEP') }}"/>
+                    <x-jet-input id="cep" type="text" class="mt-1 block w-full" autocomplete="off"
+                                 :value="$cep['cep']"
+                                 disabled/>
+                </div>
+                <div class="col">
+                    <x-jet-label for="logradouro" value="Logradouro"/>
+                    <x-jet-input id="logradouro" type="text" class="mt-1 block w-full" autocomplete="off"
+                                 :value="$cep['logradouro']"
+                                 disabled/>
+                </div>
+                <div class="col">
+                    <x-jet-label for="complemento" value="Complemento"/>
+                    <x-jet-input id="complemento" type="text" class="mt-1 block w-full" autocomplete="off"
+                                 :value="$cep['complemento']"
+                                 disabled/>
+                </div>
+                <div class="col">
+                    <x-jet-label for="bairro" value="Bairro"/>
+                    <x-jet-input id="bairro" type="text" class="mt-1 block w-full" autocomplete="off"
+                                 :value="$cep['bairro']"
+                                 disabled/>
+                </div>
+                <div class="col">
+                    <x-jet-label for="localidade" value="Localidade"/>
+                    <x-jet-input id="localidade" type="text" class="mt-1 block w-full" autocomplete="off"
+                                 :value="$cep['localidade']"
+                                 disabled/>
+                </div>
+                <div class="col">
+                    <x-jet-label for="uf" value="Estado"/>
+                    <x-jet-input id="uf" type="text" class="mt-1 block w-full" autocomplete="off"
+                                 :value="$cep['uf']"
+                                 disabled/>
+                </div>
+            @endif
             <div class="col col-sm-1">
                 <x-jet-label for="name" value="{{__('State')}}"/>
                 @if($contact->state)

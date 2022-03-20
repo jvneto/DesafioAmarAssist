@@ -1,64 +1,75 @@
-version: '2.0'
+version: "3.7"
 services:
-
-    #PHP Service
-    app:
+    # image project
+    laravel_7:
         build:
-            context: .
+            args:
+                user: teste
+                uid: 1000
+            context: ./
             dockerfile: Dockerfile
-        image: cloudsigma.com/php
-        container_name: app
+        image: especializati/laravel-app
         restart: unless-stopped
-        tty: true
-        environment:
-            SERVICE_NAME: app
-            SERVICE_TAGS: dev
-        working_dir: /var/www/html/
+        working_dir: /var/www/
         volumes:
-            - ./:/var/www/html/
-            - ./php/laravel.ini:/usr/local/etc/php/conf.d/laravel.ini
+            - ./:/var/www
+        depends_on:
+            - redis
+            - queue
         networks:
-            - app-network
+            - laravel-eti
 
-    #Nginx Service
-    webserver:
+    # nginx
+    nginx:
         image: nginx:alpine
-        container_name: webserver
         restart: unless-stopped
-        tty: true
         ports:
-            - "80:80"
-            - "443:443"
+            - 8989:80
         volumes:
-            - ./:/var/www/html/
-            - ./nginx/conf.d/:/etc/nginx/conf.d/
+            - ./:/var/www
+            - ./docker/nginx/:/etc/nginx/conf.d/
         networks:
-            - app-network
+            - laravel-eti
 
-    #MySQL Service
-    db:
-        image: mysql:5.7.32
-        container_name: db
+    # db mysql
+    mysql:
+        image: mysql:5.7.22
         restart: unless-stopped
-        tty: true
-        ports:
-            - "3306:3306"
         environment:
-            MYSQL_DATABASE: laravel_web
-            MYSQL_ROOT_PASSWORD: root
-            SERVICE_TAGS: dev
-            SERVICE_NAME: mysql
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
         volumes:
-            - dbdata:/var/lib/mysql/
-            - ./mysql/my.cnf:/etc/mysql/my.cnf
+            - ./.docker/mysql/dbdata:/var/lib/mysql
+        ports:
+            - 3388:3306
         networks:
-            - app-network
+            - laravel-eti
 
-#Docker Networks
+    # queue
+    queue:
+        build:
+            args:
+                user: teste
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        command: "php artisan queue:work"
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+        networks:
+            - laravel-eti
+
+    # redis
+    redis:
+        image: redis:latest
+        networks:
+            - laravel-eti
+
 networks:
-    app-network:
+    laravel-eti:
         driver: bridge
-#Volumes
-volumes:
-    dbdata:
-        driver: local

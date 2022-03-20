@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::middleware(['locales','auth:sanctum', 'verified'])->get('/', function () {
     return view('dashboard');
 })->name('dashboard');

@@ -43,6 +43,9 @@
 
                 <div class="mb-0">
                     <div class="d-flex justify-content-end align-items-baseline">
+                        <a class="text-muted me-3" href="{{ route('register') }}">
+                            {{ __('Create Account') }}
+                        </a>
                         <x-jet-button>
                             {{ __('Log in') }}
                         </x-jet-button>

@@ -177,5 +177,11 @@
     "Log Out Other Browser Sessions": "Sair de outras sessões do navegador",
     "Create Account": "Criar uma conta",
     "Create Contact": "Criar Contato",
-    "This is the only way to add a contact to your address book.": "Essa é a unica forma de adicionar um contato em sua agenda!"
+    "This is the only way to add a contact to your address book.": "Essa é a unica forma de adicionar um contato em sua agenda!",
+    "Phone": "Telefone",
+    "View Contact": "Visualizar Contato",
+    "Here you can see contact information": "Aqui você pode ver as informações de contato",
+    "Activated": "Ativado",
+    "Disabled": "Desativado",
+    "State": "Estado"
 }

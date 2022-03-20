@@ -30,7 +30,19 @@ class ContactPolicy
      */
     public function view(User $user, Contact $contact)
     {
-        //
+        return $contact->user_id == $user->id;
+    }
+
+    /**
+     * Determine whether the user can state the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Contact  $contact
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function state(User $user, Contact $contact)
+    {
+        return $contact->user_id == $user->id;
     }
 
     /**
@@ -53,7 +65,7 @@ class ContactPolicy
      */
     public function update(User $user, Contact $contact)
     {
-        //
+        return $contact->user_id == $user->id;
     }
 
     /**
@@ -65,7 +77,7 @@ class ContactPolicy
      */
     public function delete(User $user, Contact $contact)
     {
-        //
+        return $contact->user_id == $user->id;
     }
 
     /**

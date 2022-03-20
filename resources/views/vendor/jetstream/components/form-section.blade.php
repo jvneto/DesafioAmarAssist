@@ -13,6 +13,7 @@
     </div>
     <div class="col-md-8">
         <div class="card shadow-sm">
+            @if(isset($submit))
             <form wire:submit.prevent="{{ $submit }}">
                 <div class="card-body">
                 {{ $form }}
@@ -24,6 +25,11 @@
                     </div>
                 @endif
             </form>
+            @else
+                <div class="card-body">
+                    {{ $form }}
+                </div>
+            @endif
         </div>
     </div>
 </div>

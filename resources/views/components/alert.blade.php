@@ -10,15 +10,6 @@
 ],
 ])
 <div {{ $attributes->merge(['class' => "d-flex align-items-center shadow-lg text-center p-4 {$colors[$type]}"]) }}>
-    @if($hasIcon)
-        @if($type === 'warning')
-            <x-icons.exclamation class="h-8 w-8 text-warning mr-2"/>
-        @elseif($type === 'danger')
-            <x-icons.danger class="h-8 w-8 text-danger mr-2"/>
-        @else
-            <x-icons.info class="h-8 w-8 text-info mr-2"/>
-        @endif
-    @endif
     <div class="flex-grow text-left">
         {{ $slot }}
     </div>

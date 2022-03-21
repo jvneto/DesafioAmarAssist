@@ -78,7 +78,7 @@ O código-fonte desse projeto foi projetado a seguir como principio a escalabili
 ## Composição do Código Fonte
 
 - Back-end: **[Laravel](https://laravel.com/)**
-- Front-end: **[BootStrap](https://getbootstrap.com/)**
+- Front-end: **[Bootstrap](https://getbootstrap.com/)**
 - Banco de Dados: **[Mysql](https://www.mysql.com/)**
 - Armazenamento de Dados em Memória: **[Redis](https://redis.io/)**
 - ### Gerenciador de Pacotes
